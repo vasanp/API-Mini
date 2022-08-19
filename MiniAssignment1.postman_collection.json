@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "d038a511-ab15-4204-91e5-e865fee1e144",
+		"name": "Miniassignment1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7664851"
+	},
+	"item": [
+		{
+			"name": "Validate_Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hbs-ob-stage.herokuapp.com/status",
+					"protocol": "https",
+					"host": [
+						"hbs-ob-stage",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_OTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"8122167122\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hbs-ob-stage.herokuapp.com/get_register_otp",
+					"protocol": "https",
+					"host": [
+						"hbs-ob-stage",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"get_register_otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create_User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"vasanp\",\n    \"phone\": \"8122167122\",\n    \"email\": \"hasher@hashedin.com\",\n    \"password\": \"vasanp\",\n    \"otp\": 111111\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hbs-ob-stage.herokuapp.com/user",
+					"protocol": "https",
+					"host": [
+						"hbs-ob-stage",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit_User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"vasanp\",\n    \"phone\": \"9655152285\",\n    \"email\": \"game@hashedin.com\",\n    \"password\": \"vasanp\",\n    \"otp\": 111111\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hbs-ob-stage.herokuapp.com/user",
+					"protocol": "https",
+					"host": [
+						"hbs-ob-stage",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"9655152285\",\n    \"otp\": 111111\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hbs-ob-stage.herokuapp.com/user",
+					"protocol": "https",
+					"host": [
+						"hbs-ob-stage",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_OTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"9655152285\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hbs-ob-stage.herokuapp.com/get_otp",
+					"protocol": "https",
+					"host": [
+						"hbs-ob-stage",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"get_otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"9655152285\",\n    \"LoginType\": \"password\",\n    \"password\": \"vasanp\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hbs-ob-stage.herokuapp.com/authenticate",
+					"protocol": "https",
+					"host": [
+						"hbs-ob-stage",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"response = pm.response.json()",
+							"",
+							"access_token = response.access_token",
+							"",
+							"pm.environment.set(\"access_token\", access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"9655152285\",\n    \"LoginType\": \"OTP\",\n    \"otp\": 111111\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hbs-ob-stage.herokuapp.com/authenticate",
+					"protocol": "https",
+					"host": [
+						"hbs-ob-stage",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_AccessToken",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjU5MDkwODA2LCJqdGkiOiI3MTJlNzY5NC1hZjRlLTRlOTctODVjYy0wYWY3ODQyODY4MGYiLCJuYmYiOjE2NTkwOTA4MDYsInR5cGUiOiJhY2Nlc3MiLCJzdWIiOiI2MmUzYjczOTQwODY5YjUyZTQxN2RlNWEiLCJleHAiOjE2NTkwOTE3MDZ9.D0tkyD4gpuxlSliPydNL4lQCDKAuYpHvlt5MwpT0lcA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://hbs-ob-stage.herokuapp.com/protected_test",
+					"protocol": "https",
+					"host": [
+						"hbs-ob-stage",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"protected_test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
